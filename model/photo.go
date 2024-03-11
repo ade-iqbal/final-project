@@ -9,10 +9,10 @@ import (
 
 type Photo struct {
 	GormModel
-	Title    string `json:"title" gorm:"not null" validate:"required"`
-	Caption  string `json:"caption"`
-	PhotoUrl string `json:"photo_url" gorm:"not null" validate:"required"`
-	UserID   uint   `json:"user_id"`
+	Title    string `gorm:"not null" validate:"required"`
+	Caption  string 
+	PhotoUrl string `gorm:"not null" validate:"required"`
+	UserID   uint   
 	
 	User     *User  `gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL;"`
 }

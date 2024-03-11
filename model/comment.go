@@ -9,9 +9,9 @@ import (
 
 type Comment struct {
 	GormModel
-	UserID  uint   `json:"user_id"`
-	PhotoID uint   `json:"photo_id"`
-	Message string `json:"message" gorm:"not null" validate:"required"`
+	UserID  uint   
+	PhotoID uint   
+	Message string `gorm:"not null" validate:"required"`
 
 	User    *User  `gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL;"`
 	Photo   *Photo `gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL;"`
