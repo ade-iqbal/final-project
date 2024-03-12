@@ -105,7 +105,7 @@ func (h *commentHandler) GetAllComment(ctx *gin.Context) {
 					ID: value.Photo.ID,
 				},
 				Title: value.Photo.Title,
-				Caption: value.Photo.Caption,
+				Caption: *value.Photo.Caption,
 				PhotoUrl: value.Photo.PhotoUrl,
 				UserID: value.Photo.UserID,
 			},

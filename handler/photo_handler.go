@@ -40,7 +40,7 @@ func (h *photoHandler) CreatePhoto(ctx *gin.Context) {
 	ctx.ShouldBindJSON(&photoRequest)
 	photo := model.Photo {
 		Title: photoRequest.Title,
-		Caption: photoRequest.Caption,
+		Caption: &photoRequest.Caption,
 		PhotoUrl: photoRequest.PhotoUrl,
 		UserID: userId,
 	}
@@ -62,7 +62,7 @@ func (h *photoHandler) CreatePhoto(ctx *gin.Context) {
 			CreatedAt: newPhoto.CreatedAt,
 		},
 		Title: newPhoto.Title,
-		Caption: newPhoto.Caption,
+		Caption: *newPhoto.Caption,
 		PhotoUrl: newPhoto.PhotoUrl,
 		UserID: newPhoto.UserID,
 	}
@@ -93,7 +93,7 @@ func (h *photoHandler) GetAllPhoto(ctx *gin.Context) {
 				UpdatedAt: value.UpdatedAt,
 			},
 			Title: value.Title,
-			Caption: value.Caption,
+			Caption: *value.Caption,
 			PhotoUrl: value.PhotoUrl,
 			UserID: value.UserID,
 			User: &dto.UserResponse {
@@ -118,7 +118,7 @@ func (h *photoHandler) UpdatePhoto(ctx *gin.Context) {
 	ctx.ShouldBindJSON(&photoRequest)
 	photo := model.Photo {
 		Title: photoRequest.Title,
-		Caption: photoRequest.Caption,
+		Caption: &photoRequest.Caption,
 		PhotoUrl: photoRequest.PhotoUrl,
 	}
 
@@ -146,7 +146,7 @@ func (h *photoHandler) UpdatePhoto(ctx *gin.Context) {
 			UpdatedAt: updatedPhoto.UpdatedAt,
 		},
 		Title: updatedPhoto.Title,
-		Caption: updatedPhoto.Caption,
+		Caption: *updatedPhoto.Caption,
 		PhotoUrl: updatedPhoto.PhotoUrl,
 		UserID: updatedPhoto.UserID,
 	}

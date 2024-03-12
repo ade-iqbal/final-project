@@ -10,7 +10,7 @@ import (
 type Photo struct {
 	GormModel
 	Title    string `gorm:"not null" validate:"required"`
-	Caption  string 
+	Caption  *string 
 	PhotoUrl string `gorm:"not null" validate:"required"`
 	UserID   uint   
 	
