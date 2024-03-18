@@ -3,12 +3,10 @@ package handler
 import (
 	"errors"
 	"fga-final-project/dto"
-	"fga-final-project/helper"
 	"fga-final-project/model"
 	"fga-final-project/service"
 	"fga-final-project/util"
 	"net/http"
-	"strconv"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -98,16 +96,7 @@ func (h *userHandler) UpdateUser(ctx *gin.Context) {
 
 		userData = ctx.MustGet("UserData").(jwt.MapClaims)
 		userId = uint(userData["id"].(float64))
-		userIdParam, _ = strconv.Atoi(ctx.Param("userId"))
 	)
-
-	if userId != uint(userIdParam) {
-		helper.LoggingError("Forbidden Access", util.ErrForbidden)
-
-		baseResponse.Message = util.ForbiddenMessage
-		ctx.AbortWithStatusJSON(http.StatusForbidden, baseResponse)
-		return
-	}
 
 	ctx.ShouldBindJSON(&userRequest)
 	user := model.User {
@@ -115,7 +104,7 @@ func (h *userHandler) UpdateUser(ctx *gin.Context) {
 		Username: userRequest.Username,
 	}
 
-	updatedUser, err := h.UserService.UpdateUser(uint(userIdParam), user)
+	updatedUser, err := h.UserService.UpdateUser(uint(userId), user)
 	if err != nil {
 		switch {
 			case errors.Is(err, gorm.ErrRecordNotFound):
