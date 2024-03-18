@@ -83,8 +83,6 @@ func (h *socialMediaHandler) GetAllSocialMedia(ctx *gin.Context) {
 		return
 	}
 
-	// TODO: konfirmasi lagi responsenya benar atau salah
-	// penamaan key di deskripsi tidak konsisten
 	for _, value := range socialMedias {
 		socialMediaResponse = dto.SocialMediaResponse {
 			ResponseDTO: dto.ResponseDTO {
@@ -100,7 +98,6 @@ func (h *socialMediaHandler) GetAllSocialMedia(ctx *gin.Context) {
 					ID: value.User.ID,
 				},
 				Username: value.User.Username,
-				Email: value.User.Email, // di deskripsi mengirimkan data photo url
 			},
 		}
 

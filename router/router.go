@@ -43,9 +43,6 @@ func init() {
 func StartApp() *gin.Engine {
 	router := gin.Default()
 
-	// TODO: Konfirmasi lagi apakah semua update dan delete harus ada authorization
-	// deskripsi social media tidak dijelaskan
-
 	userRouter := router.Group("/users")
 	{
 		userRouter.POST("/register", userHandler.Register)

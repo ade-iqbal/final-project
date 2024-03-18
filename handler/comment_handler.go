@@ -147,8 +147,6 @@ func (h *commentHandler) UpdateComment(ctx *gin.Context) {
 		return
 	}
 
-	// TODO: konfirmasi lagi responsenya benar atau salah
-	// di deskripsi mengirimkan response photo bukan comment
 	commentResponse := dto.CommentResponse {
 		ResponseDTO: dto.ResponseDTO {
 			ID: updatedComment.ID,

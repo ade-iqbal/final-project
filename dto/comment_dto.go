@@ -11,6 +11,6 @@ type CommentResponse struct {
 	PhotoID uint   `json:"photo_id,omitempty"`
 	Message string `json:"message,omitempty"`
 
-	User *UserResponse `json:",omitempty"`
-	Photo *PhotoResponse `json:",omitempty"`
+	User  *UserResponse  `json:"user,omitempty"`
+	Photo *PhotoResponse `json:"photo,omitempty"`
 }

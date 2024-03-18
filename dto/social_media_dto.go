@@ -11,5 +11,5 @@ type SocialMediaResponse struct {
 	SocialMediaUrl string `json:"social_media_url,omitempty"`
 	UserID         uint   `json:"user_id,omitempty"`
 
-	User *UserResponse `json:",omitempty"`
+	User *UserResponse `json:"user,omitempty"`
 }
